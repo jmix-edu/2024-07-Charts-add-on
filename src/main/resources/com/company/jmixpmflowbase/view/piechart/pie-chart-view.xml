@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:charts="http://jmix.io/schema/charts/ui"
+      title="msg://pieChartView.title">
+    <layout>
+        <charts:chart id="chart"
+                      width="100%"
+                      height="100%">
+            <charts:legend top="5%" left="center"/>
+            <charts:tooltip trigger="ITEM"/>
+            <charts:series>
+                <charts:pie name="Access form"
+                            radius="40% 70%"
+                            avoidLabelOverlap="false">
+                    <charts:label show="false" position="CENTER"/>
+                    <charts:emphasis>
+                        <charts:label show="true" fontSize="40" fontWeight="bold"/>
+                    </charts:emphasis>
+                </charts:pie>
+            </charts:series>
+        </charts:chart>
+    </layout>
+</view>

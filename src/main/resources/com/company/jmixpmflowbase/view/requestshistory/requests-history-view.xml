@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view" xmlns:charts="http://jmix.io/schema/charts/ui"
+      title="msg://requestsHistoryView.title">
+    <data>
+        <collection id="requestsHistoriesDc" class="com.company.jmixpmflowbase.entity.RequestsHistory">
+            <loader id="requestsHistoriesDl" readOnly="true">
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <timer id="updateChartTimer" delay="2000" repeating="true" autostart="true"/>
+    </facets>
+    <layout>
+        <charts:chart id="requestsChart" width="100%" height="100%">
+            <charts:xAxes>
+                <charts:xAxis/>
+            </charts:xAxes>
+            <charts:yAxes>
+                <charts:yAxis/>
+            </charts:yAxes>
+
+            <charts:series>
+                <charts:line/>
+            </charts:series>
+        </charts:chart>
+    </layout>
+</view>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<view xmlns="http://jmix.io/schema/flowui/view"
+<view xmlns="http://jmix.io/schema/flowui/view" xmlns:charts="http://jmix.io/schema/charts/ui"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
       title="msg://taskListView.title"
       focusComponent="tasksDataGrid">
@@ -16,6 +16,18 @@
                 </query>
             </loader>
         </collection>
+        <keyValueCollection id="workloadDc">
+            <properties>
+                <property name="assignee" class="com.company.jmixpmflowbase.entity.User"/>
+                <property name="sum" datatype="decimal"/>
+            </properties>
+            <loader id="workloadDl">
+                <query>
+                    <![CDATA[select t.assignee, sum(t.estimatedEfforts) from Task_ t group by t.assignee]]>
+                </query>
+            </loader>
+        </keyValueCollection>
+
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -39,27 +51,62 @@
             <button id="removeBtn" action="tasksDataGrid.remove"/>
             <simplePagination id="pagination" dataLoader="tasksDl"/>
         </hbox>
-        <dataGrid id="tasksDataGrid"
-                  width="100%"
-                  minHeight="20em"
-                  dataContainer="tasksDc"
-                  columnReorderingAllowed="true">
-            <actions>
-                <action id="create" type="list_create"/>
-                <action id="edit" type="list_edit"/>
-                <action id="remove" type="list_remove"/>
-            </actions>
-            <columns resizable="true">
-                <column property="name"/>
-                <column property="assignee"/>
-                <column property="startDate"/>
-                <column property="estimatedEfforts"/>
-                <column property="project"/>
-            </columns>
-        </dataGrid>
+        <hbox width="100%">
+            <dataGrid id="tasksDataGrid"
+                          width="100%"
+                          minHeight="20em"
+                          dataContainer="tasksDc"
+                          columnReorderingAllowed="true">
+                <actions>
+                    <action id="create" type="list_create"/>
+                    <action id="edit" type="list_edit"/>
+                    <action id="remove" type="list_remove"/>
+                </actions>
+                <columns resizable="true">
+                    <column property="name"/>
+                    <column property="assignee"/>
+                    <column property="startDate"/>
+                    <column property="estimatedEfforts"/>
+                    <column property="project"/>
+                </columns>
+            </dataGrid>
+            <charts:chart id="workloadChart" width="25em">
+                <charts:dataSet>
+                    <charts:source dataContainer="workloadDc"
+                                   categoryField="assignee"
+                                   valueFields="sum"/>
+                </charts:dataSet>
+                <charts:legend/>
+                <charts:tooltip trigger="ITEM" formatter="{b}: {d}%"/>
+                <charts:series>
+                    <charts:pie name="Assignee">
+                        <charts:label show="false"/>
+                    </charts:pie>
+                </charts:series>
+            </charts:chart>
+        </hbox>
+        <charts:chart id="tasksEffortsChart"
+                      width="100%" minHeight="10em">
+            <charts:tooltip/>
+            <charts:xAxes>
+                <charts:xAxis>
+                    <charts:axisLabel rotate="20" align="CENTER" margin="35"/>
+                </charts:xAxis>
+            </charts:xAxes>
+            <charts:yAxes>
+                <charts:yAxis/>
+            </charts:yAxes>
+
+            <charts:series>
+                <charts:bar name="Estimated efforts">
+                    <charts:itemStyle opacity="0.5"/>
+                </charts:bar>
+            </charts:series>
+        </charts:chart>
         <hbox id="lookupActions" visible="false">
             <button id="selectBtn" action="selectAction"/>
             <button id="discardBtn" action="discardAction"/>
         </hbox>
     </layout>
 </view>
+

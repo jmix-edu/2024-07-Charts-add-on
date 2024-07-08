@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view" xmlns:charts="http://jmix.io/schema/charts/ui"
+      title="msg://nativeJsonGaugeView.title">
+    <layout>
+        <charts:chart id="chart" height="100%" width="100%">
+        <charts:series>
+            <charts:gauge>
+                <charts:axisLine>
+                    <charts:lineStyle width="30">
+                        <charts:colorPalette>
+                            <charts:colorItem range="0.3" color="#67e0e3"/>
+                            <charts:colorItem range="0.7" color="#37a2da"/>
+                            <charts:colorItem range="1" color="#fd666d"/>
+                        </charts:colorPalette>
+                    </charts:lineStyle>
+                </charts:axisLine>
+            </charts:gauge>
+        </charts:series>
+            <charts:nativeJson>
+                <![CDATA[
+                {
+                "series": [
+                    {
+                        "type": "gauge",
+                        "pointer": {
+                            "itemStyle": {
+                                "color": "auto"
+                            }
+                        },
+                        "axisTick": {
+                            "distance": -30,
+                            "length": 8,
+                            "lineStyle": {
+                                "color": "#fff",
+                                "width": 2
+                            }
+                        },
+                        "splitLine": {
+                            "distance": -30,
+                            "length": 30,
+                            "lineStyle": {
+                                "color": "#fff",
+                                "width": 4
+                            }
+                        },
+                        "axisLabel": {
+                            "color": "inherit",
+                            "distance": 40,
+                            "fontSize": 20
+                        },
+                        "detail": {
+                            "valueAnimation": true,
+                            "formatter": "{value} km/h",
+                            "color": "inherit"
+                        },
+                        "data": [{"value":70}]
+                    }
+                ]
+                }
+                ]]>
+            </charts:nativeJson>
+        </charts:chart>
+    </layout>
+</view>

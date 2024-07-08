@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view" xmlns:charts="http://jmix.io/schema/charts/ui"
+      title="msg://candlestickView.title">
+    <layout>
+        <charts:chart id="chart"
+                      width="100%" height="100%">
+            <charts:title text="Stock chart"/>
+
+
+            <charts:tooltip trigger="AXIS">
+                <charts:axisPointer type="LINE"/>
+                <charts:formatterFunction>
+                    <![CDATA[
+                        function (params) {
+                              var tar = params[0];
+
+                       return '<b>Day: </b>' + tar.name + '<br/><hr/>' +
+                              '<b>Open: </b>' + tar.value.Open + '<br/>' +
+                              '<b>Close: </b>' + tar.value.Close + '<br/>' +
+                              '<b>High: </b>' + tar.value.High + '<br/>' +
+                              '<b>Low: </b>' + tar.value.Low + '<br/><hr/>' +
+                              '<b>Volume: </b>' + tar.value.Volume;
+                            }
+                    ]]>
+                </charts:formatterFunction>
+            </charts:tooltip>
+
+            <charts:dataZoom>
+                <charts:insideDataZoom xAxisIndexes="0, 1"/>
+                <charts:sliderDataZoom xAxisIndexes="0, 1" bottom="10"/>
+            </charts:dataZoom>
+
+            <charts:grid>
+                <charts:gridItem left="10%" right="10%" bottom="200"/>
+                <charts:gridItem left="10%" right="10%" height="80" bottom="80"/>
+            </charts:grid>
+
+            <charts:xAxes>
+                <charts:xAxis>
+                    <charts:axisLine onZero="false"/>
+                    <charts:splitLine show="false"/>
+                </charts:xAxis>
+
+                <charts:xAxis scale="false" gridIndex="1">
+                    <charts:axisLine onZero="false"/>
+                    <charts:axisTick show="false"/>
+                    <charts:splitLine show="false"/>
+                    <charts:axisLabel show="false"/>
+                </charts:xAxis>
+            </charts:xAxes>
+
+            <charts:yAxes>
+                <charts:yAxis scale="true">
+                    <charts:splitArea show="true"/>
+                </charts:yAxis>
+
+                <charts:yAxis scale="true" gridIndex="1">
+                    <charts:axisLabel show="false"/>
+                    <charts:axisLine show="false"/>
+                    <charts:axisTick show="false"/>
+                    <charts:splitLine show="false"/>
+                </charts:yAxis>
+            </charts:yAxes>
+
+            <charts:series>
+                <charts:candlestick>
+                    <charts:encode x="Date" y="Open, Close, Low, High"/>
+                </charts:candlestick>
+
+                <charts:bar name="Volume" xAxisIndex="1" yAxisIndex="1" large="true">
+                    <charts:itemStyle color="#7fbe9e"/>
+                    <charts:encode x="Date" y="Volume"/>
+                </charts:bar>
+            </charts:series>
+        </charts:chart>
+
+    </layout>
+</view>

@@ -6,6 +6,16 @@
         <item view="Project.list" title="msg://com.company.jmixpmflowbase.view.project/projectListView.title"/>
         <item view="Task_.list" title="msg://com.company.jmixpmflowbase.view.task/taskListView.title"/>
         <item view="TimeEntry.list" title="msg://com.company.jmixpmflowbase.view.timeentry/timeEntryListView.title"/>
+        <item view="PieChartView" title="msg://com.company.jmixpmflowbase.view.piechart/pieChartView.title"/>
+        <item view="ProjectStatsView"
+              title="msg://com.company.jmixpmflowbase.view.projectstats/projectStatsView.title"/>
+        <item view="RequestsHistoryView"
+              title="msg://com.company.jmixpmflowbase.view.requestshistory/requestsHistoryView.title"/>
+        <item view="NativeJsonGaugeView"
+              title="msg://com.company.jmixpmflowbase.view.nativejsongauge/nativeJsonGaugeView.title"/>
+        <item view="DishesRatingView"
+              title="msg://com.company.jmixpmflowbase.view.dishesrating/dishesRatingView.title"/>
+        <item view="CandlestickView" title="msg://com.company.jmixpmflowbase.view.candlestick/candlestickView.title"/>
     </menu>
 
 </menu-config>

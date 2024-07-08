@@ -43,6 +43,9 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'io.jmix.flowui:jmix-flowui-test-assist'
+    implementation 'io.jmix.charts:jmix-charts-flowui-starter'
+
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.14.2'
 }
 
 test {
